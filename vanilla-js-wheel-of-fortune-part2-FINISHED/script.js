@@ -5,9 +5,7 @@
   const startButton = document.querySelector('.button');
   const display = document.querySelector('.display');
   
-  let deg = 0;
-  let zoneSize = 45; // deg
-
+  
   // Counter clockwise
   const symbolSegments = {
     1: "Frog",
@@ -19,6 +17,9 @@
     7: "Dragon",
     8: "Snowman",
   }
+  
+  let deg = 0;
+  const zoneSize = 360 / Object.keys(symbolSegments).length;
 
   const handleWin = (actualDeg) => {
     const winningSymbolNr = Math.ceil(actualDeg / zoneSize);
@@ -33,7 +34,7 @@
     // Calculate a new rotation between 5000 and 10 000
     deg = Math.floor(5000 + Math.random() * 5000);
     // Set the transition on the wheel
-    wheel.style.transition = 'all 10s ease-out';
+    wheel.style.transition = 'transform 5s ease-out';
     // Rotate the wheel
     wheel.style.transform = `rotate(${deg}deg)`;
     // Apply the blur
